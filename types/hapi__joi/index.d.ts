@@ -915,6 +915,7 @@ export interface ObjectSchema extends AnySchema {
      * Verifies an assertion where.
      */
     assert(ref: string | Reference, schema: SchemaLike, message?: string): this;
+    assert(ref: string | Reference, schema: SchemaLike, message?: string): this;
 
     /**
      * Overrides the handling of unknown keys for the scope of the current object only (does not apply to children).
@@ -1220,8 +1221,11 @@ export function compile(schema: SchemaLike): Schema;
  * @param value - the value to validate.
  * @param schema - the schema object.
  * @param message - optional message string prefix added in front of the error message. may also be an Error object.
+ * @param options - optional options object, passed in to Joi.validate
  */
 export function assert(value: any, schema: SchemaLike, message?: string | Error): void;
+export function assert(value: any, schema: SchemaLike, message?: string | Error, options?: ValidationOptions): void;
+export function assert(value: any, schema: SchemaLike, options?: ValidationOptions): void;
 
 /**
  * Validates a value against a schema, returns valid object, and throws if validation fails where:
